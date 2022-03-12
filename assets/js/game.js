@@ -172,22 +172,32 @@ var shop = function () {
       playerInfo.upgradeAttack();
       break;
     case "LEAVE":
-    case "leave":
-      window.alert("Now You're Leaving the store.");
+      case "leave":
+        window.alert("Now You're Leaving the store.");
+        
+        // do nothing, so function will end
+        break;
+        default:
+          window.alert("You did not pick a valid option. Try again");
+          
+          // call shop() again to force player to pick a valid option
+          shop();
+          break;
+        }
+};
 
-      // do nothing, so function will end
-      break;
-    default:
-      window.alert("You did not pick a valid option. Try again");
-
-      // call shop() again to force player to pick a valid option
-      shop();
-      break;
+// function to get a players name
+var getPlayerName = function() {
+  var name = "";
+  while (name === "" || name === null) {
+    name = prompt("What is your robot's name?");
   }
+  console.log("Your robot's name is " + name);
+  return name;
 };
 
 var playerInfo = {
-  name: window.prompt("What is your robot's name?"),
+  name: getPlayerName(),
   health: randomNumber(95, 125),
   attack: randomNumber(9, 12),
   money: randomNumber(10, 20),
@@ -234,6 +244,8 @@ var enemyInfo = [
     attack: randomNumber(10, 13)
   }
 ];
+
+
 
 console.log(enemyInfo);
 console.log(enemyInfo[0]);
