@@ -117,7 +117,7 @@ var startGame = function() {
     // if player is still alive, keep fighting
     if (playerInfo.health > 0) {
       // let player know what round they are in, remember that arrays start at 0 so it needs to have 1 added to it
-      window.alert("Welcome to Insane Mech Gladiators! Round" + (i + 1));
+      window.alert("Welcome to Insane Robo Gladiators! Round" + (i + 1));
 
       // pick a new enemy to fight based on the index of the enemy.Names array
       var pickedEnemyObj = enemyInfo[i];
@@ -181,6 +181,8 @@ var shop = function () {
   );
 
   // use switch to carry out action
+  shopOptionPrompt = parseInt(shopOptionPrompt);
+
   switch (shopOptionPrompt) {
       case 1:
       playerInfo.refillHealth();
