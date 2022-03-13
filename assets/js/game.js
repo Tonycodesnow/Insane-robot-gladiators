@@ -182,21 +182,16 @@ var shop = function () {
 
   // use switch to carry out action
   switch (shopOptionPrompt) {
-    case "REFILL":
-    case "refill":
+      case 1:
       playerInfo.refillHealth();
       break;
-    case "UPGRADE":
-    case "upgrade":
+      case 2:
       playerInfo.upgradeAttack();
       break;
-    case "LEAVE":
-      case "leave":
-        window.alert("Now You're Leaving the store.");
-        
-        // do nothing, so function will end
+      case 3:
+        window.alert("Leaving the store.");
         break;
-        default:
+      default:
           window.alert("You did not pick a valid option. Try again");
           
           // call shop() again to force player to pick a valid option
@@ -252,15 +247,15 @@ var enemyInfo = [
   },
   {
     name: "Amy Android",
-    attack: randomNumber(9, 11)
+    attack: randomNumber(9, 12)
   },
   {
     name: "Zyborg",
-    attack: randomNumber(10, 12)
+    attack: randomNumber(9, 13)
   },
   {
     name: "Terminus T-800",
-    attack: randomNumber(10, 13)
+    attack: randomNumber(10, 14)
   }
 ];
 
