@@ -44,11 +44,11 @@ var fightOrSkip = function () {
 };
 
 // fight function ( noe with parameters for enemies name)
-var fight = function (enemy) {
+var fight = function(enemy) {
   // keep track of who goes first
   var isPlayerTurn = true;
 
-  if (Math.random() > 0.5) {
+  if (Math.random() > .5) {
     isPlayerTurn = false;
   }
 
@@ -87,9 +87,7 @@ var fight = function (enemy) {
         // leave while() loop since enemy is dead
         break;
       } else {
-        window.alert(
-          enemy.name + " still has " + enemy.health + " health left."
-        );
+        window.alert(enemy.name + " still has " + enemy.health + " health left.");
       }
       // player gets attacked first
     } else {
@@ -190,7 +188,7 @@ var endGame = function () {
     startGame();
   } else {
     window.alert(
-      "Thank you for playing Insane Mech Gladiators! Battle again soon!"
+      "Thank you for playing Insane Robo Gladiators! Battle again soon!"
     );
   }
 };
