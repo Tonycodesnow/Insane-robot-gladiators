@@ -34,7 +34,7 @@ var fightOrSkip = function () {
         playerInfo.name + " has decided to skip this fight. Goodbye!"
       );
       // subtract money from playerMoney for skipping, but don't let them go into the negative
-      playerInfo.credit = Math.max(0, playerInfo.credit - 10);
+      playerInfo.credits = Math.max(0, playerInfo.credits - 10);
 
       //return true if player wants to leave
       return true;
@@ -44,11 +44,11 @@ var fightOrSkip = function () {
 };
 
 // fight function ( noe with parameters for enemies name)
-var fight = function(enemy) {
+var fight = function (enemy) {
   // keep track of who goes first
   var isPlayerTurn = true;
 
-  if (Math.random() > .5) {
+  if (Math.random() > 0.5) {
     isPlayerTurn = false;
   }
 
@@ -82,12 +82,14 @@ var fight = function(enemy) {
         window.alert(enemy.name + " has been defeated!");
 
         // award player money for winning
-        playerInfo.credit = playerInfo.credit + 20;
+        playerInfo.credits = playerInfo.credits + 20;
 
         // leave while() loop since enemy is dead
         break;
       } else {
-        window.alert(enemy.name + " still has " + enemy.health + " health left.");
+        window.alert(
+          enemy.name + " still has " + enemy.health + " health left."
+        );
       }
       // player gets attacked first
     } else {
@@ -114,11 +116,13 @@ var fight = function(enemy) {
         // leave while() loop if player is dead
         break;
       } else {
-        window.alert(playerInfo.name + " still has " + playerInfo.health + " health left.");
+        window.alert(
+          playerInfo.name + " still has " + playerInfo.health + " health left."
+        );
       }
     }
     // switch turn order for next round
-    isPlayerTurn =!isPlayerTurn;
+    isPlayerTurn = !isPlayerTurn;
   }
 };
 
@@ -170,15 +174,26 @@ var startGame = function () {
 var endGame = function () {
   window.alert("The game has now ended. Let's see how you did!");
 
-  // if the player is still alive, player wins!
-  if (playerInfo.health > 0) {
-    window.alert(
-      "Great job, you've survived the game! You now have a score of " +
-        playerInfo.credit +
-        "."
+  var hightScore = localStorage.getItem("highscore");
+  if (hightScore === null) {
+    hightScore = 0;
+  }
+
+  // if player has more money than the high score, player has new high score!
+  if (playerInfo.credits > hightScore) {
+    localStorage.setItem("highscore", playerInfo.credits);
+    localStorage.setItem("name", playerInfo.name);
+
+    alert(
+      playerInfo.name + " now has the high score of " + playerInfo.credits + "!"
     );
   } else {
-    window.alert("You've lost your robot in battle.");
+    alert(
+      playerInfo.name +
+        " did not beat the high score of " +
+        highScore +
+        ". Maybe next time!"
+    );
   }
 
   // ask player if the'd like to play again
@@ -239,22 +254,22 @@ var playerInfo = {
   reset: function () {
     this.health = randomNumber(95, 125);
     this.attack = randomNumber(9, 12);
-    this.credit = randomNumber(10, 20);
+    this.credits = randomNumber(10, 20);
   }, // comma!
   refillHealth: function () {
-    if (this.credit >= 7) {
-      window.alert("Refilling player's health by 24 for 8 credits.");
-      this.health += 23;
-      this.credit -= 8;
+    if (this.credits >= 8) {
+      window.alert("Refilling player's health by 24 for 9 credits.");
+      this.health += 24;
+      this.credits -= 9;
     } else {
       window.alert("You don't have enough credits!");
     }
   }, // comma!
-  ugradeAttack: function () {
-    if (this.credit >= 7) {
-      window.alert("Upgrading player's attack by 6 for 8 credits.");
+  upgradeAttack: function () {
+    if (this.credits >= 5) {
+      window.alert("Upgrading player's attack by 6 for 6 credits.");
       this.attack += 6;
-      this.credit -= 8;
+      this.credits -= 6;
     } else {
       window.alert("You don't have enough credits!");
     }
