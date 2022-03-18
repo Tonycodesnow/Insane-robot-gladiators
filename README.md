@@ -13,6 +13,8 @@
 - [Usage](#usage)
 - [Languages](#languages)
 - [License](#license)
+- [Contact](#contact)
+
 
 <br />
 
@@ -39,6 +41,8 @@ JavaScript, HTML, GitHub.
 This project is licensed under the MIT [License](https://choosealicense.com/licenses/mit).
 
 <br />
+
+## Contact
 
 Find me on GitHub: <a href="https://github.com/Tonycodesnow">@Tonycodesnow</a> 
 or Email me: <a href="mailto:toni.huertinez@gmail.com">toni.huertinez@gmail.com</a>
