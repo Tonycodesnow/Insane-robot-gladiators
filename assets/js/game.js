@@ -174,13 +174,13 @@ var startGame = function () {
 var endGame = function () {
   window.alert("The game has now ended. Let's see how you did!");
 
-  var hightScore = localStorage.getItem("highscore");
-  if (hightScore === null) {
-    hightScore = 0;
+  var highScore = localStorage.getItem("highscore");
+  if (highScore === null) {
+    highScore = 0;
   }
 
   // if player has more money than the high score, player has new high score!
-  if (playerInfo.credits > hightScore) {
+  if (playerInfo.credits > highScore) {
     localStorage.setItem("highscore", playerInfo.credits);
     localStorage.setItem("name", playerInfo.name);
 
